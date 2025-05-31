@@ -1,0 +1,63 @@
+.S9gUrf-YoZ4jf > div > div
+{
+    position: relative;
+    background-color: rgba( 45, 45, 45,0.6);
+    color: white;
+    
+    &::before{
+            content: '';
+            background-color: rgba(23,156,82,1);
+            width: 125px;
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            top:20%;
+            transition: 300ms;
+            left: 105%;
+            rotate: 45deg;
+
+
+
+    }
+
+
+    &::after{
+        content: '';
+        background-color: rgba(23,107,239,1);
+        width: 200px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        transition: 300ms;
+        left: 0;
+        transform: translateX(-100%);
+        z-index: 0;
+
+
+
+}
+    &:hover::before{
+       left: 65%;
+       transition: 300ms;
+    }
+    &:hover::after{
+        left: 65%;
+        transition: 300ms;
+     }
+     &:hover{
+        background-color: rgba(247, 181, 41) ;
+        color: white;
+     }
+
+     &:hover > div > div{
+        color: green;
+     }
+
+     & > div{
+        position: relative;
+        z-index: 100;
+     }
+
+
+}

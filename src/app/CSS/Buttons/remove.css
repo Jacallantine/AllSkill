@@ -1,0 +1,15 @@
+.remove{
+    background-color: red;
+    color: white;
+    padding:5px 5px;
+    border:2px solid transparent;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.remove:hover{
+    border:2px solid red;
+    background-color: white;
+    color: red;
+    transition: 300ms;
+}

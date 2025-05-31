@@ -1,0 +1,10 @@
+.default{
+
+    padding:10px 20px;
+    cursor: pointer;
+    transition: 300ms;
+    border:2px solid transparent;
+    &:hover{
+    border: 2px solid #1976D2
+    }
+}
