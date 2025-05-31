@@ -40,8 +40,13 @@ export default function LoginComp() {
       throw new Error("Login failed");
     }
 
-    alert("Logged In");
-    window.location.href = "/";
+    if(response.ok)
+      {
+        alert("Login success")
+      }
+
+    // alert("Logged In");
+    // window.location.href = "/";
 
   }
 
