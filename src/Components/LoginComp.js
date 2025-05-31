@@ -25,6 +25,7 @@ export default function LoginComp() {
     e.preventDefault();
 
     const data = { email, password };
+    console.log(process.env.NEXT_PUBLIC_API_BASE)
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/login`, {
       method: "POST",
