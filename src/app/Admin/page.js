@@ -1,5 +1,4 @@
 import TicketList from "@/Components/TicketList";
-import AdminSideBar from "@/Components/AdminSideBar";
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { getUserFromToken } from "@/lib/auth";
@@ -29,7 +28,6 @@ export default async function AdminPage() {
 
   return (
     <section className="flex h-[90vh]">
-            <AdminSideBar/>
             <TicketList tickets={tickets} name = {user.name}/>
     
     

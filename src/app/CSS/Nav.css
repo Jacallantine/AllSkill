@@ -72,3 +72,31 @@ a {
         transform: translateY(-1500px);
     }
 }
+
+.adminLinks{
+    position: relative;
+}
+
+.adminLinks::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 60%;
+    background-color: white;
+    transform: translateY(-50%);
+  }
+  
+
+  .adminLinks.last::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 60%;
+    background-color: white;
+    transform: translateY(-50%);
+  }
+  

@@ -1,0 +1,22 @@
+.categories{
+
+    color:black;
+    padding:15px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition:300ms;
+
+    &:hover{
+
+        background-color: rgba(0, 0, 0, 0.178);
+        color:black;
+        transition: 300ms;
+    }
+    
+}
+
+.categories:nth-of-type(1)
+{
+    border-top: 1px solid rgba(0, 0, 0, 0.7);
+}
+

@@ -1,5 +1,6 @@
 
 "use client";
+import Internet from "@/app/Internet/page";
 import { useState, useEffect } from "react";
 
 
@@ -7,10 +8,13 @@ export default function AdminOrderComp()
 {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0)
+    const [email, setEmail] = useState("")
+    const [social, setSocial] = useState("")
 
     useEffect(() => {
         const storedItems = JSON.parse(sessionStorage.getItem("admincart") || "[]");
         setItems(storedItems)
+        console.log(storedItems)
         const calculatedTotal = storedItems.reduce((sum, item) => sum + item.price, 0);
         setTotal(calculatedTotal)
     }, []);
@@ -28,6 +32,56 @@ export default function AdminOrderComp()
         updatedItems.splice(i, 1)
         sessionStorage.setItem("admincart", JSON.stringify(updatedItems));
         setItems(updatedItems)
+    }
+
+
+    async function CreateTicket()
+    {
+        if(!email || !social)
+            {
+                return alert("Please fill in all fields")
+            }
+        const cart = JSON.parse(sessionStorage.getItem("admincart") || "[]");
+
+
+        const pc = cart.find(item => item.service === "Custom PC")?.pc;
+
+        const data = {
+            email: email,
+            social: social,
+            internetId: null,
+            pcOptiId: null,
+            pc: {
+                cpuId: pc.cpu?.id,
+                gpuId: pc.gpu?.id,
+                ramId: pc.ram?.id,
+                moboId: pc.mobo?.id,
+                psuId: pc.psu?.id,
+                caseId: pc.pcCase?.id,
+                storageId: pc.storage?.id
+            }
+
+       
+        };
+        console.log("data",data)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/tickets/create`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials:"include",
+            body: JSON.stringify(data)
+          });
+      
+          if (!response.ok) {
+            throw new Error("Error, Try again");
+          }
+          else{
+            alert("Ticket Created")
+            router.push('/Admin');
+          } 
+          
+          sessionStorage.clear("admincart")
     }
 
 
@@ -61,13 +115,21 @@ export default function AdminOrderComp()
         ):
         
         
-        ( <ul className="flex flex-col gap-y-5 overflow-y-scroll h-[95%]">
+        ( 
+            <div className="h-[500px]">
+            <ul className="flex flex-col gap-y-5 overflow-y-scroll h-5/6">
         {items.map((item, index) => (
-        
+
             <li key={index} className="flex justify-between items-center px-8 gap-x-5"><span className="flex items-center gap-x-12 text-xl">{item.service} - ${item.price}    </span><button  onClick={()=>{removeItem(index)}} className="remove" >Remove</button></li> 
-        
         ))}
-    </ul>)
+    </ul>
+
+        <button 
+        className="w-full max-w-[300px] text-white md:[transition:300ms] [border:2px_solid_transparent] hover:[border:2px_solid_rgba(23,107,239,1)] flex items-center justify-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)] " 
+        onClick={()=>CreateTicket()}
+        >Add Ticket</button>
+        </div>
+    )
 
     }
     
@@ -82,8 +144,8 @@ export default function AdminOrderComp()
         </div>
         
         <p className="mx-auto">Input customer information below.</p>
-        <input className="w-[400px]  mx-auto border 1 white px-4 py-3" placeholder="Input Email"/>
-        <input  className="w-[400px] mx-auto border 1 white px-4 py-3" placeholder="Input Contact Information (customers)"/>
+        <input className="w-[400px]  mx-auto border 1 white px-4 py-3" placeholder="Input Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+        <input  className="w-[400px] mx-auto border 1 white px-4 py-3" placeholder="Input Contact Information (customers)" value={social} onChange={(e)=>setSocial(e.target.value)} required/>
 
         <button onClick={() => addToCart("Internet", 45)} className="w-[225px] w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add Internet</button>
         

@@ -9,6 +9,9 @@ export default async function Home() {
   const slides = [
     "/champ.jpg", 
     "/cod1.jpg",
+    "/esport1.jpg",
+    "/esport2.jpg",
+    "/esport3.avif"
   ];
 
   
@@ -36,10 +39,10 @@ export default async function Home() {
  
  </div>
 
- <div className="py-32 flex items-center flex-col gap-y-12">
+ <div className="py-32 flex flex-col gap-y-12">
  
- <h1 className=" text-5xl  italic ">Services</h1>
-  <div className="flex justify-center flex-wrap">
+ <h1 className=" md:text-7xl text-6xl  italic md:px-16 px-8 text-center md:text-left  ">Services</h1>
+  <div className="flex justify-center flex-wrap gap-2.5 px-6">
       
     <HomeCard product = {"Internet Optimization"} description = {"test"} href={"/Internet"}/>
     <HomeCard product = {"Get Controller"} description = {"test"} href={"/Controller"}/>
@@ -54,12 +57,12 @@ export default async function Home() {
 
 
 
- <div className="py-32 flex items-center flex-col gap-y-12">
+ <div className="py-32 flex flex-col gap-y-12 bg-[#E6E8E6]">
  
- <h1 className=" text-5xl  italic ">Reviews</h1>
+ <h1 className="md:text-7xl text-6xl  italic text-black md:px-16 px-8 md:text-left text-center">Testimonials</h1>
  
  
- <div className="w-[800px]">
+ <div className="w-full md:px-16 md:py-16 py-8 px-8">
  <Carousel slides={slides} />
 
  

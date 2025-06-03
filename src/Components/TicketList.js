@@ -82,10 +82,10 @@ export default function TicketList({tickets : initialTickets, name})
         
         {
             tickets.map((ticket, i) =>(
-                    <div key={i} className="bg-white text-black w-[800px] mx-auto p-4 flex flex-col gap-y-4 rounded ">
+                    <div key={i} className="bg-white text-black w-full max-w-[900px] mx-auto p-4 py-8 flex flex-col gap-y-4 rounded ">
 
                     <div className="flex justify-between">
-                        <h1 className="text-xl">{ticket.email}</h1>
+                        <h1 className="text-xl">Email: {ticket.email}</h1>
                         <p className="text-sm">Ticket Id: {ticket.id}</p>
                     </div>
                     <div className="flex justify-between">

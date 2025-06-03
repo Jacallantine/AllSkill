@@ -2,7 +2,7 @@ import "../app/CSS/HomeCard.css"
 
 export default function HomeCard({product, description, href})
 {
-    return <a href={href}><div className="card">
+    return <a href={href} className="card-wrapper"><div className="card">
       <p className="card-title">{product}</p>
       <p className="small-desc">
        {description}
