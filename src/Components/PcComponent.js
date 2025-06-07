@@ -102,9 +102,9 @@ export default function PcComponent({ items }) {
                 <button onClick={finalizePcBuild} className="transition duration-300 border 2 white hover:bg-white hover:text-gray-900 py-3 w-full max-w-[200px] mx-auto cursor-point bg-gray-900 text-white cursor-pointer">Submit</button>
             </div>
 
-            <div className="flex justify-center w-full">
+            <div className="flex justify-center w-full py-12">
                 {selected && (
-                    <div className="flex flex-col p-12">
+                    <div className="flex flex-col">
                         <h2 className="font-bold italic mb-2 text-4xl text-center">
                             {
                                 selected === "pcCase"? ("Pc Case"):( 
@@ -116,7 +116,7 @@ export default function PcComponent({ items }) {
                             
                             }
                         </h2>
-                        <div className="flex gap-10"> 
+                        <div className="flex flex-wrap gap-x-4 gap-y-4 py-8"> 
                         
                         {componentMap[selected].map((item, i) => (
                             <PcCard key={item.id}

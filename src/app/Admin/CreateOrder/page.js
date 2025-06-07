@@ -9,6 +9,12 @@ export default async function CreateTicketPage() {
   const token = cookieStore.get('token')?.value;
 
   const user = await getUserFromToken(token); 
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/services`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch");
+  }
+  const comps = await res.json();
+  console.log("test",comps)
 
   if (!user || user.role !== 'admin') {
     redirect('/unauthorized');
@@ -19,7 +25,7 @@ export default async function CreateTicketPage() {
 
   return (
  
-        <AdminOrderComp/>
+        <AdminOrderComp service={comps}/>
           
 
 

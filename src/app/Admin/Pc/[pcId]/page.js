@@ -1,17 +1,30 @@
-// File path: app/Admin/Pc/[pcId]/page.tsx
 export default async function PcDetailPage({ params }) {
-  const { pcId } = await params; // no need to `await params`
+  const { pcId } = await params; 
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/pc/${pcId}`, {
-    credentials: "include", // if cookie auth is being used
+    credentials: "include",
+    cache: "no-store", 
   });
 
-  if (!res.ok) {
-    return <p className="text-red-500 text-center mt-10">PC not found</p>;
+  let pc = null;
+
+  if (res.ok) {
+    try {
+      pc = await res.json();
+    } catch (err) {
+      console.error("Failed to parse PC JSON:", err);
+    }
+  } else {
+    console.error(`API responded with ${res.status}`);
   }
 
-  const pc = await res.json();
-  console.log(pc)
+  if (!pc) {
+    return (
+      <section className="flex flex-col items-center justify-center w-full py-32">
+        <h1 className="text-3xl text-red-500">Failed to load PC details.</h1>
+      </section>
+    );
+  }
 
   return (
     <section className="flex flex-col items-center justify-center w-full py-32">

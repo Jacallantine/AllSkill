@@ -51,6 +51,7 @@ export default async function Navbar()
             {"content":"Tickets", "href":"/Admin"},
             {"content":"Create Ticket", "href":"/Admin/CreateOrder"},
             {"content":"Custom PC", "href":"/Admin/CreateOrder/CustomPc"},
+            {"content":"Edit Parts", "href":"/Admin/EditPart"},
           ]
             }}
 

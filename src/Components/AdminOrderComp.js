@@ -1,23 +1,29 @@
 
 "use client";
 import Internet from "@/app/Internet/page";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 
 
-export default function AdminOrderComp()
+export default function AdminOrderComp({service})
 {
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0)
     const [email, setEmail] = useState("")
+    const [internetId, setInternetId] = useState(service.internet[0].id ?? "")
+    const [internetPrice, setInternetPrice] = useState(service.internet[0].price ?? "")
+    const [pcOptiId, setPcOptiId] = useState(service.pcOpti[0].id ?? "")
+    const [pcOptiPrice, setPcOptiPrice] = useState(service.pcOpti[0].price ?? "")
     const [social, setSocial] = useState("")
+
 
     useEffect(() => {
         const storedItems = JSON.parse(sessionStorage.getItem("admincart") || "[]");
         setItems(storedItems)
-        console.log(storedItems)
+
         const calculatedTotal = storedItems.reduce((sum, item) => sum + item.price, 0);
         setTotal(calculatedTotal)
     }, []);
+
 
 
     useEffect(() => {
@@ -42,16 +48,20 @@ export default function AdminOrderComp()
                 return alert("Please fill in all fields")
             }
         const cart = JSON.parse(sessionStorage.getItem("admincart") || "[]");
+     
 
 
         const pc = cart.find(item => item.service === "Custom PC")?.pc;
+        const internet = cart.find(item => item.service === "Internet Opti")?.id;
+        const pcOpti = cart.find(item => item.service === "Pc Opti")?.id;
 
         const data = {
-            email: email,
-            social: social,
-            internetId: null,
-            pcOptiId: null,
-            pc: {
+            email,
+            social,
+            ...(internet && { InternetId : internetId }),
+            ...(pcOpti && { PcOptiId : pcOptiId }),
+            ...(pc && {
+              pc: {
                 cpuId: pc.cpu?.id,
                 gpuId: pc.gpu?.id,
                 ramId: pc.ram?.id,
@@ -59,11 +69,11 @@ export default function AdminOrderComp()
                 psuId: pc.psu?.id,
                 caseId: pc.pcCase?.id,
                 storageId: pc.storage?.id
-            }
-
+              }
+            })
+          };
+          
        
-        };
-        console.log("data",data)
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/tickets/create`, {
             method: "POST",
             headers: {
@@ -81,16 +91,17 @@ export default function AdminOrderComp()
             router.push('/Admin');
           } 
           
-          sessionStorage.clear("admincart")
+          sessionStorage.clear()
     }
 
 
 
 
 
-    const addToCart = (name, price) => {
+    const addToCart = (id, name, price, ) => {
+       
         const currentCart = JSON.parse(sessionStorage.getItem("admincart") || "[]");
-        const newItem = { service: `${name}`, price: `${price}` };
+        const newItem = { service: `${name}`, price: `${price}`, id : id};
         let updatedItems = [...currentCart, newItem]
         sessionStorage.setItem("admincart", JSON.stringify(updatedItems));
         setItems(updatedItems)
@@ -147,9 +158,9 @@ export default function AdminOrderComp()
         <input className="w-[400px]  mx-auto border 1 white px-4 py-3" placeholder="Input Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
         <input  className="w-[400px] mx-auto border 1 white px-4 py-3" placeholder="Input Contact Information (customers)" value={social} onChange={(e)=>setSocial(e.target.value)} required/>
 
-        <button onClick={() => addToCart("Internet", 45)} className="w-[225px] w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add Internet</button>
+        <button onClick={() => addToCart(internetId, "Internet Opti", internetPrice) } className="w-[225px] w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add Internet</button>
         
-        <button onClick={() => addToCart("Pc Opti", 100)} className="w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center  mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add PC Opti</button>
+        <button onClick={() => addToCart(pcOptiId, "Pc Opti", pcOptiPrice)} className="w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center  mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add PC Opti</button>
         <a href="/Admin/CreateOrder/CustomPc" className="w-full justify-center w-[225px] md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Custom PC</a>
         
         </div>

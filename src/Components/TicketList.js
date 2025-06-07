@@ -93,14 +93,17 @@ export default function TicketList({tickets : initialTickets, name})
                                 <p className="text-md">Purchased:</p>
                                 
                                     { 
-                                        ticket.pcOptiId ? <p>Pc Opti</p> : ""
+                                        ticket.pcOptiId ? <p><strong>Pc Opti</strong></p> : ""
                                     }
                                     { 
-                                        ticket.internetId ? <p>Internet Opti</p> : ""
+                                        ticket.internetId ? <p><strong>Internet Opti</strong></p> : ""
                                     }
                                     { 
                                         ticket.pcId ? <a href={`Admin/Pc/${ticket.pcId}`} className="cursor-pointer px-2 py-1 bg-black text-white flex justify-center hover:bg-white hover:text-black [transition:300ms] [border:1px_solid_transparent] hover:[border:1px_solid_black]">PC</a> : ""
                                     }
+                                    { 
+                                      ticket.pcBudgetId ? <a href={`Admin/Budget/${ticket.pcBudgetId}`} className="cursor-pointer px-2 py-1 bg-black text-white flex justify-center hover:bg-white hover:text-black [transition:300ms] [border:1px_solid_transparent] hover:[border:1px_solid_black]">PC Budget</a> : ""
+                                  }
                                       
 
                                 
