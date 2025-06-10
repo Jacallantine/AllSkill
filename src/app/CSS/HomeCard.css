@@ -3,6 +3,7 @@
 
   max-width: 600px;
   flex: 1 1 400px;
+  margin:0 auto;
 }
 
 
@@ -12,17 +13,19 @@
     line-height: normal;
     font-weight: 700;
     margin-bottom: 0.5em;
+    transition: 800ms;
   }
   
   .small-desc {
-    font-size: 1em;
     font-weight: 400;
     line-height: 1.5em;
     color: #452c2c;
   }
   
   .small-desc {
-    font-size: 1em;
+    font-size: 0.7em;
+    transition: 800ms;
+
   }
   
   .go-corner {
@@ -35,8 +38,9 @@
     overflow: hidden;
     top: 0;
     right: 0;
-    background: linear-gradient(135deg, #6293c8, #384c6c);
+     background: linear-gradient(135deg, #6293c8, #384c6c); 
     border-radius: 0 4px 0 32px;
+
   }
   
   .go-arrow {
@@ -60,6 +64,7 @@
     overflow: hidden;
     background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
     font-family: Arial, Helvetica, sans-serif;
+    /* background-color: white; */
   }
   
   .card:before {
@@ -83,12 +88,12 @@
   }
   
   .card:hover .small-desc {
-    transition: all 0.5s ease-out;
+    transition: all 0.8s ease-out;
     color: rgba(255, 255, 255, 0.8);
   }
   
   .card:hover .card-title {
-    transition: all 0.5s ease-out;
+    transition: all 0.8s ease-out;
     color: #ffffff;
   }
   

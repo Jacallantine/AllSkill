@@ -1,26 +1,48 @@
 "use client";
 import Card from "@/Components/Card"
+import PriceCard from "@/Components/PriceCard";
 
 export default function Internet()
 {
-    const addToCart = () => {
-        const currentCart = JSON.parse(sessionStorage.getItem("cart") || "[]");
-        const newItem = { service: "Internet", price: 45, image : "/internet.jpg" };
-        sessionStorage.setItem("cart", JSON.stringify([...currentCart, newItem]));
-    };
-    return <section className="w-full md:py-24 py-32 px-12">
-        <div className=" mx-auto max-w-[900px] flex flex-col gap-y-8">
-        <h1 className="flex md:mx-0 mx-auto md:text-4xl text-2xl">Internet Optimization</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h2 className="md:text-4xl text-2xl">Vouches</h2>
-        <div>
+
+    return <section className="w-full md:py-32 py-42 px-12">
+        <div className=" mx-auto max-w-[900px] flex flex-col gap-y-32">
+        <div className="flex flex-col gap-y-8">
+         <h1 className="flex md:mx-0 mx-auto text-4xl italic">Internet Optimization</h1>
+        <p> Our Internet Optimization service helps you get the best performance from your network, whether you're gaming, streaming, or working from home. We analyze and configure your setup to reduce lag, improve speed, and eliminate connection drops. Choose the option that best fits your setup — or skip the wait with our priority service.
+        </p>
         
-        <Card name={"Arcitys"} image={"/arcity.jpg"} vouch={"This is example text of what a pro would say"}/>
+        </div>
+       
+
+        <div className="flex flex-wrap gap-6 gap-y-8 ">
+
+        <h1 className="italic text-4xl text-center md:text-left">Reviews:</h1>
+        
+        <div className="flex flex-wrap w-full justify-center gap-6">
+        <Card name={"Arcitys"} image={"/arcity.jpg"} vouch={"Had many opti’s before but now the only person I let touch my PC/Internet is AllSkill, huge vouch for his services."}/>
+        <Card name={"Biffle"} image={"/biffle.jpg"} vouch={"PC and Internet Optimization, i'm shooting nukes against hackers now."}/>
+        <Card name={"Blazt"} image={"/blazt.jpg"} vouch={"Huge vouch for AllSkill and his team, got his internet Opti which made me fry."}/>
         
         
         </div>
-        <button onClick={addToCart} className="md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 [border-radius:20px] active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add to cart</button>
+        
+        
+        
+        
         </div>
+        <div className="flex flex-col gap-y-8  ">
+        <h1 className="italic text-4xl md:text-left text-left">Pricing:</h1>
+        
+        <div className="flex flex-wrap justify-center gap-6 ">
+        <PriceCard name={"Console"} price={35} service={"Internet"} description = {"This is optimization is for only consoles. NO REFUNDS."}/>
+        <PriceCard name={"PC"} price={45} service={"Internet"} description = {"This is optimization is for only PC's. NO REFUNDS."}/>
+        <PriceCard name={"Skip The Line"} price={90} service={"Internet"} description = {"Buy this to skip the wait and get the opti fast. NO REFUNDS."}/>
+        
+        </div>
+        
+        </div>
+       </div>
         
     
     

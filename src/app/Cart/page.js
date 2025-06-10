@@ -8,6 +8,7 @@ export default function Cart() {
     useEffect(() => {
         const storedItems = JSON.parse(sessionStorage.getItem("cart") || "[]");
         setItems(storedItems)
+        console.log(storedItems)
         const calculatedTotal = storedItems.reduce((sum, item) => sum + item.price, 0);
         setTotal(calculatedTotal)
     }, []);
@@ -40,7 +41,7 @@ export default function Cart() {
     }
 
     return (
-        <section className="p-4 w-full gap-y-8 flex md:flex-row flex-col justify-around py-24 relative">
+        <section className="p-4 w-full gap-y-8 flex md:flex-row flex-col justify-around py-24 relative md:gap-x-6">
         <div className={` ${noRefund === 0? "hidden":"norefunds"} text-white `}>
         
         
@@ -53,7 +54,7 @@ export default function Cart() {
                    
         </div>
 
-        <div className="flex flex-col md:w-3/5">
+        <div className="flex flex-col w-full min-w-[600px] max-w-[800px] mx-auto">
             <h1 className="text-3xl mb-2 bg-white text-black py-2 px-3">Your Cart</h1>
             <div className=" text-black bg-white py-4">
             {
@@ -72,10 +73,13 @@ export default function Cart() {
                     ):
                     
                     
-                    ( <ul className="flex flex-col gap-y-4">
+                    ( <ul className="flex flex-col gap-y-4 ">
                     {items.map((item, index) => (
                     
-                        <li key={index} className="flex justify-between items-center px-8"><span className="flex items-center gap-x-12 text-xl"> <img src={item.image} className="w-[100px] h-[100px]"/>{item.service} - ${item.price}    </span><button  onClick={()=>{removeItem(index)}} className="remove" >Remove</button></li> 
+                        <li key={index} className="flex justify-between items-center px-8">
+                        <span className="flex items-center gap-x-12 text-xl"> 
+                        <img src={item.image} className="w-[100px] h-[100px]"/>{item.service} {item.name} - ${item.price}    </span>
+                        <button  onClick={()=>{removeItem(index)}} className= "text-red-500 text-sm cursor-pointer" >Remove</button></li> 
                     
                     ))}
                 </ul>)
@@ -89,12 +93,14 @@ export default function Cart() {
         </div>
             
             
-        <div className="flex flex-col gap-y-3 items-center">
+        <div className="flex flex-col gap-y-3 items-center w-full max-w-[400px] mx-auto">
         <h1 className="text-3xl ">Order Summary</h1>
             <input placeholder="Email" required className="w-[300px] bg-white text-black px-3 py-1"/>
             <input placeholder="Enter Address" required className="w-[300px] bg-white text-black px-3 py-1"/>
             <input placeholder="Best way to contact (Twitter)" required className="w-[300px] bg-white text-black px-3 py-1"/>
-            <div className="flex w-full px-4 md:justify-between justify-around [border-bottom:1px_solid_white] py-2"><p className="text-lg">Total</p><p className="text-xlg">${total}</p></div>
+            <div className="flex w-full max-w-[300px] px-4  justify-between [border-bottom:1px_solid_white] py-2">
+            <p className="text-lg">Total</p>
+            <p className="text-xlg">${total}</p></div>
             
             <button className=" mx-auto w-[300px] default md:[transition:300ms] py-2 bg-blue-700 cursor-pointer active:bg-white active:text-blue-700 hover:bg-white hover:text-blue-700" >Checkout</button>
             

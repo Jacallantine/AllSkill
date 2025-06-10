@@ -10,6 +10,7 @@ import "./CSS/Buttons/google.css";
 import "./CSS/Buttons/remove.css";
 import "./CSS/Card.css";
 import Navbar from "@/Components/NavBar";
+import Footer from "@/Components/Footer";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,8 @@ export default function RootLayout({ children }) {
       <Navbar/>
 
         {children}
+
+        <Footer/>
       </body>
     </html>
     </GoogleOAuthProvider>

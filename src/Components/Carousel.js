@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 export default function Carousel({
-  autoSlide = true,
+  autoSlide = false,
   autoSlideInterval = 8000,
   slides,
 }) {
@@ -31,12 +31,19 @@ export default function Carousel({
           <div key={i} className="min-w-full h-full">
           <div
             className="w-full h-full bg-cover bg-center flex items-center justify-center"
-            style={{ backgroundImage: `url(${slide})` }}
+            style={{ backgroundImage: `url(${slide.href})` }}
             id="carousel"
           >
-            <p className="text-white text-2xl font-semibold relative z-10">
-              This is a vouch
+          <div className="flex flex-col">
+              <p className="text-white md:text-3xl text-base font-semibold relative z-10 w-full max-w-[1100px] px-4">
+              {slide.vouch}
             </p>
+
+            <h1 className="md:text-4xl text-lg text-white z-10 text-right italic mt-8 px-4">
+              {slide.pro}
+            </h1>
+          </div>
+            
           </div>
         </div>
         
@@ -47,14 +54,14 @@ export default function Carousel({
       <div className="absolute inset-0 flex items-center justify-between p-4">
         <button
           onClick={prev}
-          className="p-2 rounded-full shadow bg-white/70 text-gray-800 hover:bg-white transition cursor-pointer"
+          className="p-2 shadow bg-white text-gray-900 hover:bg-gray-900 hover:text-white transition cursor-pointer md:[transform:translateY(0)] [transform:translateY(300px)]"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={30} />
         </button>
         <button
           onClick={next}
-          className="p-2 rounded-full shadow bg-white/70 text-gray-800 hover:bg-white transition cursor-pointer"
+          className="p-2  shadow bg-white text-gray-900 hover:bg-gray-900 hover:text-white transition cursor-pointer md:[transform:translateY(0)] [transform:translateY(300px)]"
           aria-label="Next Slide"
         >
           <ChevronRight size={30} />

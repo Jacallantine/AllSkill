@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import GoogleButton from "@/Components/GoogleButton";
+import Image from "next/image";
 
 export default function LoginComp() {
   const [email, setEmail] = useState("");
@@ -50,29 +51,29 @@ export default function LoginComp() {
 
   }
 
-  if (!googleReady) return <div className="text-center mt-20 text-lg">Loading...</div>;
+  if (!googleReady) return <div className="text-center h-[100vh] mt-20 text-lg">Loading...</div>;
 
   return (
     <section className="w-full flex h-[90vh]">
-      <div className="flex  w-full md:w-3/5  h-fit md:h-full md:bg-white">
+      <div className="flex md:w-3/5 w-full h-full md:h-full md:bg-white bg-gray-900">
       
       
       
       
       <form
-        className="flex flex-col w-fit mx-auto [margin-top:clamp(100px,8%,200px)] gap-y-8 bg-white px-8 py-6 rounded"
+        className="flex flex-col h-fit w-full md:max-w-[500px] max-w-[400px] mx-auto [margin-top:clamp(100px,8%,200px)] gap-y-8  px-8 py-6 rounded"
         onSubmit={loginRequest}
       >
-        <h1 className="text-black text-2xl md:text-4xl">Welcome Back!</h1>
+        <h1 className="text-white text-2xl md:text-4xl md:text-gray-900">Welcome Back!</h1>
         <input
           placeholder="Email"
-          className="md:w-[350px] w-[200px] [border:1px_solid_black]  px-2 py-2 text-black"
+          className="  w-full max-w-[500px] md:[border:1px_solid_black] [border:1px_solid_white]  px-2 py-2 md:text-gray-900 text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           placeholder="Password"
-          className="md:w-[350px] w-[200px] [border:1px_solid_black] px-2 py-2 text-black"
+          className=" w-full max-w-[500px] md:[border:1px_solid_black] [border:1px_solid_white] px-2 py-2 md:text-gray-900 text-white"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -83,7 +84,9 @@ export default function LoginComp() {
         </div>
       </form>
       </div>
-      <div className="md:bg-white md:w-2/5 hidden ">
+      <img className="w-2/5 min-w-[500px] md:block hidden " src="/login.jpg"/>
+      <div className="md:bg-white md:w-2/5 hidden relative">
+      
 
 
       

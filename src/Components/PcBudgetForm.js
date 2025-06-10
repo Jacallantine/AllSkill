@@ -37,12 +37,12 @@ export default function PcBudgetForm()
     return (
 
         <div>
-        <form className="flex w-fit mx-auto mt-[10%] flex-col editCompForm " onSubmit={(e) => addPcBudget(e)}>
+        <form className="flex w-fit mx-auto mt-[clamp(200px,10vh,300px)] flex-col editCompForm " onSubmit={(e) => addPcBudget(e)}>
         <h1 className="text-2xl">Submit PC Budget</h1>
         <div className="flex flex-col  gap-y-4">
         
        
-        <div className=" flex gap-x-6">
+        <div className=" flex gap-x-6 ">
         <div className="flex flex-col">
         <label>Email:</label>
         <input value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>

@@ -1,0 +1,53 @@
+footer{
+    background: #6293C8;
+    background: linear-gradient(90deg,rgba(98, 147, 200, 1) 17%, rgba(56, 76, 108, 1) 52%, rgba(28, 37, 51, 1) 86%);
+}
+
+footer a > li{
+    position:relative;
+    width: fit-content;
+    &::before{
+        position:absolute;
+        content:"";
+        background-color: white;
+        bottom:0;
+        left: 0;
+        width: 0%;
+        height:2px;
+        transition: 300ms;
+
+    }
+
+    &:hover::before{
+        transition:300ms;
+        width: 100%;
+        
+    }
+
+}
+
+
+
+footer a:hover{
+
+    & li::before{
+        transition:300ms;
+        width: 100%;
+    }
+
+}
+
+
+.bar{
+    content: "";
+    height: 175px;
+    background-color: white;
+    width: 1px;
+}
+
+@media(max-width:762px)
+{
+    .bar{
+        display: none;
+    }
+}

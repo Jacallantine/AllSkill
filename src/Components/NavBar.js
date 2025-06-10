@@ -19,7 +19,7 @@ export default async function Navbar()
           {"content":"PC-Opti", "href":"/PcOpti"},
           {"content":"PC-Build", "href":"/PcBuild"},
           {"content":"Internet", "href":"/Internet"},
-          {"content":"Controller", "href":"/Controller"},
+          // {"content":"Controller", "href":"/Controller"},
           {"content":"Login", "href":"/Login"},
         ]}
 
@@ -31,7 +31,7 @@ export default async function Navbar()
           {"content":"PC-Opti", "href":"/PcOpti"},
           {"content":"PC-Build", "href":"/PcBuild"},
           {"content":"Internet", "href":"/Internet"},
-          {"content":"Controller", "href":"/Controller"},
+          // {"content":"Controller", "href":"/Controller"},
           {"content":`${user.firstName}`, "href":"/Profile"}
         ]
           }
@@ -42,7 +42,7 @@ export default async function Navbar()
             {"content":"PC-Opti", "href":"/PcOpti"},
             {"content":"PC-Build", "href":"/PcBuild"},
             {"content":"Internet", "href":"/Internet"},
-            {"content":"Controller", "href":"/Controller"},
+            // {"content":"Controller", "href":"/Controller"},
             {"content":`${user.firstName}`, "href":"/Profile"},
             // {"content":"Admin", "href":"/Admin"},
           ]
@@ -62,7 +62,7 @@ export default async function Navbar()
         <nav className="w-full flex md:flex-col flex-col-reverse text-black md:bg-gray-900 shadow-lg">
           <MobileNav links={links}/><div className="md:flex hidden justify-end px-24  text-white socialLinks">
                 <a target="_new" href="https://x.com/LookitsAllSkill" className="cursor-pointer px-2 py-1"><Image src="/twitter.svg" alt="Twitter Icon" width={35} height={35}/></a>
-                <a className="cursor-pointer px-2 py-1"><Image src="/discord.svg" alt="Twitter Icon" width={35} height={35}/></a>
+                <a className="cursor-pointer px-2 py-1"><Image src="/discord.svg" alt="discord" width={35} height={35}/></a>
 
             
             </div>
@@ -73,9 +73,9 @@ export default async function Navbar()
           <li key={index} className="w-fit h-full">
             <a
               href={link.href}
-              className="cursor-pointer font-semibold px-2 h-full flex items-center hover:bg-[rgba(0,0,0,0.8)] hover:text-white transition duration-300"
+              className="cursor-pointer font-semibold px-2 h-full flex items-center "
             >
-              {link.content}
+              <span className="relative z-50">{link.content}</span>
             </a>
           </li>
         ))}
