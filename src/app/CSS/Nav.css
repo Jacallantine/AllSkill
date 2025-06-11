@@ -39,8 +39,14 @@ a {
     text-transform: capitalize;
 }
 
-.mobleLinks{
-
+.mobileLinks{
+    display: flex;
+    justify-content: center;
+    border:1px solid white;
+    border-radius: 32px;
+    width: 100%;
+    max-width: 100px;
+    padding: 8px 0px;
 }
 
 .slideUp{

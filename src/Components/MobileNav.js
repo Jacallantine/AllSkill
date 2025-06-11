@@ -33,7 +33,7 @@ export default function MobileNav({links})
 
 
         }
-     <button onClick={mobileNavHandler}>X</button>
+     <button onClick={mobileNavHandler} className="mobileLinks cursor-pointer bg-white text-black px-10 py-2 rounded-4xl">X</button>
 
      <div className="flex w-[150px] justify-around">
        
@@ -41,6 +41,7 @@ export default function MobileNav({links})
       
         <a target="_new" href="https://x.com/LookitsAllSkill" className="cursor-pointer "><Image src="/twitter.svg" alt="Twitter Icon" width={35} height={35}/></a>
         <a className="cursor-pointer px-2 py-1 "><Image src="/discord.svg" alt="Twitter Icon" width={35} height={35}/></a>
+
      </div>
     
         </div>
