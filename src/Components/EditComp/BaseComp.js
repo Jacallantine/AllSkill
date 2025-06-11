@@ -181,7 +181,7 @@ export default function BaseComp({comp, selected:update})
 
                 <div className="flex gap-x-2">
                     <label htmlFor="case">Case</label>
-                    <input type="radio" id="case" name="componentType" value="cas"  onChange={handleChange} required />
+                    <input type="radio" id="case" name="componentType" value="case"  onChange={handleChange} required />
                 </div>
                 </div>
 
