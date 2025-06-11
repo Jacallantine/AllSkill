@@ -114,7 +114,7 @@ export default function AdminOrderComp({service})
         items.length === 0? (
             
             <div className="flex flex-col gap-y-4">
-                <h1 className="text-xl text-center">You have nothing in your cart. </h1>
+                <h1 className="text-xl text-center">You have nothing in the cart. </h1>
 
             </div>
             
@@ -160,7 +160,7 @@ export default function AdminOrderComp({service})
         <button onClick={() => addToCart(internetId, "Internet Opti", internetPrice) } className=" w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center gap-x-2 bg-[rgba(23,107,239,1)_!important] py-2  cursor-pointer hover:[background:white_!important] hover:[color:rgba(23,107,239,1)_!important] mx-0 [width:100%_!important] [font-weight:400_!important]"><span className="text-3xl">+</span> Add Internet</button>
         
         <button onClick={() => addToCart(pcOptiId, "Pc Opti", pcOptiPrice)} className="w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center  gap-x-2 bg-[rgba(23,107,239,1)_!important] px-12 py-2    cursor-pointer hover:[background:white_!important] hover:[color:rgba(23,107,239,1)_!important] hover:text-[rgba(23,107,239,1)] [width:100%_!important] [font-weight:400_!important]"><span className="text-3xl">+</span> Add PC Opti</button>
-        <a href="/Admin/CreateOrder/CustomPc" className="w-full rounded justify-center md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Custom PC</a>
+        <a href="/Admin/CreateOrder/CustomPc" className="w-full [border-radius:0.5rem] justify-center md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Custom PC</a>
         
         </div>
         

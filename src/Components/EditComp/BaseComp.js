@@ -196,11 +196,11 @@ export default function BaseComp({comp, selected:update})
              
              
              
-             <div className="flex flex-col"> 
+             <div className="flex flex-col w-full"> 
              <label>Name:</label>
              <input value={addName} onChange={(e) => addSetName(e.target.value)} placeholder="Name" />
              </div>
-             <div className="flex flex-col"> 
+             <div className="flex flex-col w-full"> 
              <label>Price:</label>
              <input value={addPrice} onChange={(e) => addSetPrice(e.target.value)} placeholder="Price"  type="number" />
              </div>
@@ -212,12 +212,12 @@ export default function BaseComp({comp, selected:update})
              {
                 selectedType === "psu" ? (
              <div className="flex gap-x-6">
-             <div className="flex flex-col">
+             <div className="flex flex-col w-full">
              <label>Watt</label>
              <input value={addWatt} onChange={(e) => addSetWatt(e.target.value)} placeholder="Watt" />
              </div>
              
-             <div className="flex flex-col">
+             <div className="flex flex-col w-full">
              
              
             
@@ -285,12 +285,12 @@ export default function BaseComp({comp, selected:update})
                   <div className="flex gap-x-6">
                   
                  
-                  <div className=" flex flex-col">
+                  <div className=" flex flex-col w-full">
                   <label>Name:</label>
                   <input value={Name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
                   
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col w-full">
                   <label>Price:</label>
                   <input value={Price} onChange={(e) => setPrice(Number(e.target.value))} placeholder="Price" type="number" />
                   
