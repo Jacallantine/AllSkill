@@ -115,7 +115,6 @@ export default function AdminOrderComp({service})
             
             <div className="flex flex-col gap-y-4">
                 <h1 className="text-xl text-center">You have nothing in your cart. </h1>
-                <a href="/Internet" className=" text-white flex justify-center hover:[border:2px_solid_blue-700] mx-auto w-[300px] md:mx-auto default bg-blue-700 hover:bg-white hover:text-blue-700 md:[transition:300ms]">Click Here</a>
 
             </div>
             
@@ -158,10 +157,10 @@ export default function AdminOrderComp({service})
         <input className="w-[400px]  mx-auto border 1 white px-4 py-3" placeholder="Input Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
         <input  className="w-[400px] mx-auto border 1 white px-4 py-3" placeholder="Input Contact Information (customers)" value={social} onChange={(e)=>setSocial(e.target.value)} required/>
 
-        <button onClick={() => addToCart(internetId, "Internet Opti", internetPrice) } className="w-[225px] w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add Internet</button>
+        <button onClick={() => addToCart(internetId, "Internet Opti", internetPrice) } className=" w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center gap-x-2 bg-[rgba(23,107,239,1)_!important] py-2  cursor-pointer hover:[background:white_!important] hover:[color:rgba(23,107,239,1)_!important] mx-0 [width:100%_!important] [font-weight:400_!important]"><span className="text-3xl">+</span> Add Internet</button>
         
-        <button onClick={() => addToCart(pcOptiId, "Pc Opti", pcOptiPrice)} className="w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center  mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Add PC Opti</button>
-        <a href="/Admin/CreateOrder/CustomPc" className="w-full justify-center w-[225px] md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2 active:bg-white active:text-[rgba(23,107,239,1)] cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Custom PC</a>
+        <button onClick={() => addToCart(pcOptiId, "Pc Opti", pcOptiPrice)} className="w-full md:[transition:300ms] [border:2px_solid_transparent] flex items-center justify-center  gap-x-2 bg-[rgba(23,107,239,1)_!important] px-12 py-2    cursor-pointer hover:[background:white_!important] hover:[color:rgba(23,107,239,1)_!important] hover:text-[rgba(23,107,239,1)] [width:100%_!important] [font-weight:400_!important]"><span className="text-3xl">+</span> Add PC Opti</button>
+        <a href="/Admin/CreateOrder/CustomPc" className="w-full rounded justify-center md:[transition:300ms] [border:2px_solid_transparent] flex items-center mx-auto gap-x-2 bg-[rgba(23,107,239,1)] px-12 py-2  cursor-pointer hover:bg-white hover:text-[rgba(23,107,239,1)]"><span className="text-3xl">+</span> Custom PC</a>
         
         </div>
         

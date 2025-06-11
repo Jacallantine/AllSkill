@@ -24,7 +24,7 @@ const PcCard = ({name, price, partType, items, id}) => {
         <div className="wave" />
         <div className="infotop flex flex-col ">    
           <h1>{name}</h1>
-          <div className="name">Price: ${price}</div>
+          <div className="price">Price: ${price}</div>
           <button onClick={handleAdd} className='button'><span className=''>Add</span></button>
         </div>
       </div>
